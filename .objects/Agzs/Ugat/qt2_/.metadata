@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge Welcome to Steam",
+  "Type": "Screen",
+  "Id": "qt2_itK0AEyBgjSLrqLduw",
+  "Reference": "nDJA9-wORkCi9P8Qzhcwog/qt2_itK0AEyBgjSLrqLduw",
+  "ParentRef": "nDJA9-wORkCi9P8Qzhcwog/UgatP_kDJ0ex8NuTXRf1qQ",
+  "Created": "2024-05-29T08:05:53.3132851Z",
+  "Updated": "2024-05-29T08:05:53.3132851Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.4.1.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

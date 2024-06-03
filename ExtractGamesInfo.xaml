@@ -1,0 +1,581 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ExtractGamesInfo" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:uast="clr-namespace:UiPath.Activities.System.Text;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="GamesURLs" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="HTMLText" Type="OutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>899.2,5567.2</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ExtractGamesInfo_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.Activities.System.Text</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Core.Activities.TextModifications</x:String>
+      <x:String>UiPath.Activities.System.Workflow.Business</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.Activities.System.Collections</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models.FilterBuilder</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Activities</x:String>
+      <x:String>UiPath.Platform.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.IntegrationService.Activities.Runtime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ExtractGamesInfo" sap:VirtualizedContainerService.HintSize="909.6,5502.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="color">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">white</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="RevDegree" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Assign the begging of HTML Text" sap:VirtualizedContainerService.HintSize="847.2,116.8" sap2010:WorkflowViewState.IdRef="Assign_9">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[HTMLText]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
+&lt;html lang=""en""&gt;
+&lt;head&gt;
+    &lt;meta charset=""UTF-8""&gt;
+    &lt;meta name=""viewport"" content=""width=device-width, initial-scale=1.0""&gt;
+    &lt;title&gt;Steam Review&lt;/title&gt;
+    &lt;style&gt;
+	   body {
+       background-image: url('https://wallpapercave.com/wp/wp3130254.jpg');
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size: 100% 100%;
+       }
+        .container {
+            display: flex;
+            align-items: flex-start; /* Align items at the start of the container */
+            gap: 20px; /* Space between video and text */
+        }
+        .text {
+            flex: 1; /* Make the video take up one part of the container */
+			color: white;
+        }
+        .vedio {
+            flex: 1; /* Make the text take up one part of the container */
+        }
+		h1 {text-align: center; color: white}
+		h2{color: white}
+
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;New Release Games in STEAM quick review&lt;/h1&gt;
+    &lt;/header&gt;
+   &lt;br&gt;&lt;br&gt;"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: invoke a sequence in uipath new version - Search" sap:VirtualizedContainerService.HintSize="847.2,5296.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="754c5d24-41bb-4ef1-aeae-e0dec7a34b3e" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="813.6,5056.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[GamesURLs]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="751.2,4862.4" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentGame" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="717.6,4664.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="GameDescription" />
+                      <Variable x:TypeArguments="x:String" Default="Free To Play&#xA;One Way Road: Firehunt&#xA;Adventure,&#xA;Action,&#xA;Arcade,&#xA;Shoot 'Em Up" Name="Newtext" />
+                      <Variable x:TypeArguments="x:String" Name="Name">
+                        <Variable.Default>
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </Variable.Default>
+                      </Variable>
+                      <Variable x:TypeArguments="x:String" Name="ReleaseDate">
+                        <Variable.Default>
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </Variable.Default>
+                      </Variable>
+                      <Variable x:TypeArguments="x:String" Name="Reviews">
+                        <Variable.Default>
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </Variable.Default>
+                      </Variable>
+                      <Variable x:TypeArguments="x:String" Default=" " Name="devAndpublish" />
+                      <Variable x:TypeArguments="x:String" Name="developer">
+                        <Variable.Default>
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </Variable.Default>
+                      </Variable>
+                      <Variable x:TypeArguments="x:String" Name="publisher">
+                        <Variable.Default>
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </Variable.Default>
+                      </Variable>
+                      <Variable x:TypeArguments="x:String" Name="Description">
+                        <Variable.Default>
+                          <Literal x:TypeArguments="x:String" xml:space="preserve"> </Literal>
+                        </Variable.Default>
+                      </Variable>
+                      <Variable x:TypeArguments="x:Boolean" Name="FreeGame" />
+                      <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="Results" />
+                      <Variable x:TypeArguments="x:String" Name="price">
+                        <Variable.Default>
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </Variable.Default>
+                      </Variable>
+                      <Variable x:TypeArguments="x:String" Name="tags" />
+                      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="tagsAsList" />
+                      <Variable x:TypeArguments="x:String" Name="VedioLink" />
+                      <Variable x:TypeArguments="x:String" Name="CurrentGameContainer" />
+                      <Variable x:TypeArguments="x:String" Name="Game_Text" />
+                      <Variable x:TypeArguments="s:String[]" Default="[{&quot;&quot;,&quot;&quot;}]" Name="ReviewsSplited" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="655.2,114.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_4" Url="[CurrentGame(&quot;Game_url&quot;).ToString()]" Version="V3" />
+                    <uix:NGetText DisplayName="Get Text Name" sap:VirtualizedContainerService.HintSize="655.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="754c5d24-41bb-4ef1-aeae-e0dec7a34b3e" TextString="[Name]" Version="V3">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="https://store.steampowered.com/app/2488620/F1_24/" CVScreenId="84e191b4-4342-4948-ad80-b4b9471105dd" CvElementArea="1372, 521, 176, 44" CvTextArea="374, 530, 1153, 28" CvTextArgument="F1® 24 Community Hub" CvType="Button" DesignTimeRectangle="373, 525, 1175, 40" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl id='appHubAppName' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='appHubAppName' tag='DIV' type='' class='apphub_AppName' /&gt;" Guid="a72a446d-1e63-414f-979a-cb923f356704" InformativeScreenshot="ec3e68799d47cb826e11c7c98e8877e9.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='F1® 24 on Steam' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive" />
+                      </uix:NGetText.Target>
+                    </uix:NGetText>
+                    <Assign sap:VirtualizedContainerService.HintSize="655.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_22">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[Name]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[Name.Replace("Community Hub","").replace(vbTab,"")]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <uix:NGetText DisplayName="Get Text 'Game Description'" sap:VirtualizedContainerService.HintSize="655.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="754c5d24-41bb-4ef1-aeae-e0dec7a34b3e" ScrapingOptions="None" TextString="[GameDescription]" Version="V3">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="https://store.steampowered.com/app/2191710/Elegy_of_Fate/" DesignTimeRectangle="1143, 389, 405, 520" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl class='glance_ctn' parentid='game_highlights' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='glance_ctn' parentid='game_highlights' tag='DIV' type='' aaname=' &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;  &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;' /&gt;" Guid="8ddbd5ea-2cf0-4062-9dc7-4e5b9e0056ea" ImageBase64="" InformativeScreenshot="e033d00613837db5a6b430272e892fc2.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='*' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="373, 389, 770, 540" FullSelectorArgument="&lt;webctrl class='highlight_ctn' parentid='game_highlights' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='highlight_ctn' parentid='game_highlights' tag='DIV' type='' aaname='                                                                               &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;' /&gt;" Guid="a7dd4892-5ca9-441c-98c9-7cf4af19acac" SearchSteps="FuzzySelector" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                    </uix:NGetText>
+                    <Assign sap:VirtualizedContainerService.HintSize="655.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[GameDescription]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[GameDescription.Replace(vbLf, " ").Replace(vbTab, "")]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:Matches BuilderPattern="\d* *[a-zA-Z]+, \d{4}" DisplayName="Find Matching Patterns for Release Date" FirstMatch="[ReleaseDate]" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Matches_10" Input="[GameDescription]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\\d* *[a-zA-Z]+, \\d{4}&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\d* *[a-zA-Z]+, \d{4}" RegexOption="IgnoreCase, Compiled" />
+                    <ui:Matches BuilderPattern="Developer .*Publisher.*Released" DisplayName="Find Matching Patterns For Developer And Publisher" FirstMatch="[devAndpublish]" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Matches_12" Input="[GameDescription]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;Developer .*Publisher.*Released&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="Developer.*Publisher.*Released|Developer.*Publisher.*" RegexOption="IgnoreCase, Compiled" />
+                    <If Condition="[devAndpublish IsNot Nothing]" sap:VirtualizedContainerService.HintSize="655.2,577.6" sap2010:WorkflowViewState.IdRef="If_5">
+                      <If.Then>
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,304.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[developer]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[devAndpublish.Replace("Developer","").Replace("Released","").Split("Publisher")(0).Trim()]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_13">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[publisher]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[devAndpublish.Replace("Developer","").Replace("Released","").Split("Publisher")(1).Trim()]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,102.4" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <ui:Matches BuilderPattern="Reviews:.*Release Date" DisplayName="Find Matching Patterns For Reviews" FirstMatch="[Reviews]" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Matches_11" Input="[GameDescription]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;Reviews:.*Release Date&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="Reviews:.*Release Date" RegexOption="IgnoreCase, Compiled" />
+                    <If Condition="[Reviews IsNot Nothing]" sap:VirtualizedContainerService.HintSize="655.2,1108" sap2010:WorkflowViewState.IdRef="If_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="621.6,835.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="559.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_14">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="s:String[]">[ReviewsSplited]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="s:String[]">[Reviews.Replace("Release Date","").Replace("Reviews:","").Trim().Split("-"c)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Sequence DisplayName="set Color per Review" sap:VirtualizedContainerService.HintSize="559.2,635.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:Matches BuilderPattern="[a-zA-Z ]+" DisplayName="Find Matching Patterns" FirstMatch="[RevDegree]" sap:VirtualizedContainerService.HintSize="496.8,92" sap2010:WorkflowViewState.IdRef="Matches_17" Input="[ReviewsSplited(0)]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;[a-zA-Z ]+&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[a-zA-Z ]+" RegexOption="IgnoreCase, Compiled" />
+                            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[RevDegree.Trim()]" sap:VirtualizedContainerService.HintSize="496.8,431.2" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                              <Assign x:Key="Overwhelmingly Positive" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">Lawn Green</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign x:Key="Very Positive" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_24">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">Lime Green</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign x:Key="Mostly Positive " sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_25">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">Green</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign x:Key="Mixed" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_26">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">Yellow</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign x:Key="Mostly Negative" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">Red</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign x:Key="Very Negative " sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">Fire Brick</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign x:Key="Overwhelmingly Negative" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_29">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">Dark Red</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Switch>
+                          </Sequence>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,102.4" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <ui:Replace BuilderPattern="All Reviews.*" DisplayName="Replace Matching Patterns For Description" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Replace_5" Input="[GameDescription]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;All Reviews.*&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="All Reviews.*" RegexOption="IgnoreCase, Compiled" Result="[GameDescription]">
+                      <ui:Replace.Replacement>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </ui:Replace.Replacement>
+                    </ui:Replace>
+                    <ui:Matches BuilderPattern="    .*" DisplayName="Find Matching Patterns For Descreption" FirstMatch="[Description]" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Matches_14" Input="[GameDescription]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;    .*&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="    .*" RegexOption="IgnoreCase, Compiled" />
+                    <Assign sap:VirtualizedContainerService.HintSize="655.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_21">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[Game_Text]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[CurrentGame("Game_Text").ToString()]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <uast:SplitText DisplayName="Split Text" sap:VirtualizedContainerService.HintSize="655.2,225.6" sap2010:WorkflowViewState.IdRef="SplitText_3" Results="[Results]" Separator="NewLine" SeparatorKey="NewLine" Source="[Game_Text]" />
+                    <If Condition="[Game_Text.Contains(&quot;FREE&quot;)]" DisplayName="If the Game is FREE" sap:VirtualizedContainerService.HintSize="655.2,531.2" sap2010:WorkflowViewState.IdRef="If_2">
+                      <If.Then>
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,191.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_15">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[price]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">["Free To Play"]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:Matches BuilderPattern="[^a-zA-Z]*" DisplayName="Find Matching Patterns" FirstMatch="[price]" sap:VirtualizedContainerService.HintSize="353.6,83.2" sap2010:WorkflowViewState.IdRef="Matches_16" Input="[Game_Text]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;[^a-zA-Z]*&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[^a-zA-Z]*" RegexOption="IgnoreCase, Compiled" />
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <ui:Matches BuilderPattern="\n.*,[A-Za_z\n ].*" DisplayName="Find Matching Patterns For Tags" FirstMatch="[tags]" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Matches_15" Input="[CurrentGame(&quot;Game_Text&quot;).ToString()]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\\n.*,[A-Za_z\\n ].*&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\n.*,[A-Za_z\n ].*" RegexOption="IgnoreCase, Compiled" Result="[tagsAsList]" />
+                    <Assign sap:VirtualizedContainerService.HintSize="655.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_17">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[tags]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[String.join("",tagsAsList)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <uix:NGetAttributeGeneric x:TypeArguments="x:String" Attribute="src" DisplayName="Get Attribute for Vedio Link" sap:VirtualizedContainerService.HintSize="655.2,240" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_2" Result="[VedioLink]" ScopeIdentifier="754c5d24-41bb-4ef1-aeae-e0dec7a34b3e" Version="V3">
+                      <uix:NGetAttributeGeneric.Target>
+                        <uix:TargetAnchorable BrowserURL="https://store.steampowered.com/app/3008050/Masterplan_Tycoon_Foundations/" DesignTimeRectangle="78, 526, 750, 421" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl id='movie_*' tag='VIDEO' /&gt;" FuzzySelectorArgument="&lt;webctrl id='movie_*' tag='VIDEO' type='' class='highlight_player_item highlight_movie' aaname='' /&gt;" Guid="0f48cf19-d6e0-40cb-949a-198f50f6428c" InformativeScreenshot="be5ae563fc9548f118a97765172ea5a0.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Masterplan Tycoon: Foundations on Steam' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="78, 526, 770, 540" FullSelectorArgument="&lt;webctrl class='highlight_ctn' parentid='game_highlights' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='highlight_ctn' parentid='game_highlights' tag='DIV' type='' aaname='                                                                               &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;' /&gt;" Guid="cfa385df-966f-4f0b-93cb-1ea5059ed0b1" SearchSteps="FuzzySelector" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetAttributeGeneric.Target>
+                    </uix:NGetAttributeGeneric>
+                    <Assign sap:VirtualizedContainerService.HintSize="655.2,115.2" sap2010:WorkflowViewState.IdRef="Assign_18">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[CurrentGameContainer]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;div Class=""container""&gt;
+        &lt;div Class=""video""&gt;
+            &lt;video controls width=""400""&gt;
+                &lt;source src=""" + VedioLink+""" type=""video/mp4""&gt;
+            &lt;/video&gt;
+        &lt;/div&gt;
+        &lt;div Class=""text""&gt;
+            &lt;h2&gt;" + Name.Trim +"&lt;/h2&gt;
+            &lt;p&gt;
+                &lt;b&gt;Overview: &lt;/b&gt;"+Description.Trim +"
+				&lt;br/&gt;
+				&lt;b&gt;Price: &lt;/b&gt;" + price + "
+				&lt;br/&gt;
+				&lt;b&gt;Reviews:&lt;/b&gt; &lt;b style="+"color:"+color+"&gt;"+ReviewsSplited(0)+" &lt;/b&gt; "+ReviewsSplited(1)+"
+				&lt;br/&gt;
+				&lt;b&gt;Release Date:&lt;/b&gt; "+ ReleaseDate +"
+				&lt;br/&gt;
+				&lt;b&gt;Developer:&lt;/b&gt; "+developer+"
+				&lt;br/&gt;
+				&lt;b&gt;Publisher: &lt;/b&gt;"+publisher+"
+				&lt;br/&gt;
+				&lt;b&gt;Tags:&lt;/b&gt; "+tags.Trim+"
+            &lt;/p&gt;
+
+           &lt;nav&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;a href="" " +CurrentGame("Game_url").ToString()+ """&gt;Get the Game&lt;/a&gt;&lt;/li&gt;
+     
+             &lt;/ul&gt;
+          &lt;/nav&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="655.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_19">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[HTMLText]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[String.Concat(HTMLText,CurrentGameContainer)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="655.2,167.2" sap2010:WorkflowViewState.IdRef="LogMessage_7" Message="[Name]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <Assign sap:VirtualizedContainerService.HintSize="751.2,108" sap2010:WorkflowViewState.IdRef="Assign_20">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[HTMLText]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">[String.Concat(HTMLText, "
+&lt;/body&gt;
+&lt;/html&gt;
+")]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAE1SURBVFhH7ZXrccMgEIRVAiW4FDcU5A6SDqwOlEIiUYLcgUux99AqgF5BmMkf883c2HN3HMvxUFUoFGJRF3NW+qdRur/DHrRB1V2L2Ilp+UFxpWpz9SZdt7q7Si6H5cFOrrvb6oTrNmQVsVj5R28wwXmaxP7X/XeQg07Ywa+C4qegsO6+GFogsSAXwhhKBwfOraw2Ld2b2O44EQ3d6aDI8FswYkXcjknAne50vGIPunaBABzYY2N28YtJcbp38cfQlQ6KuAfn+BYMdKeDIvLqjQVxwOje5Oih/ZPZimDmk6EFEgtycz3NKOa6IDa++3Y78KusyPD6RXUrGjuJfx2jbbtbh6GIsBNrNu9EThEChMjTLAfN74jclEa2wubMn+TcImIoIibmIuj+X5yI7U95ofDuVNUToEN3Uyyxs3sAAAAASUVORK5CYII=" InformativeScreenshot="8490eed0fb88e308a365dde84d81aa90.jpg" Selector="&lt;html app='msedge.exe' url='https://store.steampowered.com/app/2529080/Stellar_Initiative/' /&gt;" Title="invoke a sequence in uipath new version - Search" Url="https://store.steampowered.com/app/2529080/Stellar_Initiative/" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Edge Welcome to Steam",
+  "Type": "App",
+  "Id": "AgzsfGUdXEuQPB3FbJBkAg",
+  "Reference": "nDJA9-wORkCi9P8Qzhcwog/AgzsfGUdXEuQPB3FbJBkAg",
+  "Created": "2024-05-29T08:05:53.2466197Z",
+  "Updated": "2024-05-29T08:05:53.2466197Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.4.1.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

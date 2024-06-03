@@ -1,0 +1,15 @@
+{
+  "Value": {
+    "ExtractGamesInfo.xaml": [
+      {
+        "IsEnabled": true,
+        "Annotation": null,
+        "Id": "42693c8e-5b90-42d6-8f97-8d7ef13c9cf8",
+        "ActivityIdRef": "LogMessage_7",
+        "ActivityId": "1.51",
+        "ActivityName": "Log Message",
+        "IsTransient": false
+      }
+    ]
+  }
+}
