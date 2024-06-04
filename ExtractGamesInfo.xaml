@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>899.2,5567.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>899.2,4708.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ExtractGamesInfo_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -138,13 +138,9 @@
       <AssemblyReference>UiPath.IntegrationService.Activities.Runtime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ExtractGamesInfo" sap:VirtualizedContainerService.HintSize="909.6,5502.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ExtractGamesInfo" sap:VirtualizedContainerService.HintSize="909.6,4644" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="color">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">white</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="white" Name="color" />
       <Variable x:TypeArguments="x:String" Name="RevDegree" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -152,7 +148,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign the begging of HTML Text" sap:VirtualizedContainerService.HintSize="847.2,116.8" sap2010:WorkflowViewState.IdRef="Assign_9">
+    <Assign DisplayName="Assign the begging of HTML Text" sap:VirtualizedContainerService.HintSize="847.2,115.2" sap2010:WorkflowViewState.IdRef="Assign_9">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[HTMLText]</OutArgument>
       </Assign.To>
@@ -194,27 +190,31 @@
    &lt;br&gt;&lt;br&gt;"]</InArgument>
       </Assign.Value>
     </Assign>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: invoke a sequence in uipath new version - Search" sap:VirtualizedContainerService.HintSize="847.2,5296.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="754c5d24-41bb-4ef1-aeae-e0dec7a34b3e" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: invoke a sequence in uipath new version - Search" sap:VirtualizedContainerService.HintSize="847.2,4440" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="754c5d24-41bb-4ef1-aeae-e0dec7a34b3e" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="813.6,5056.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="813.6,4200" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[GamesURLs]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="751.2,4862.4" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[GamesURLs]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="751.2,4004" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentGame" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="717.6,4664.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="717.6,3806.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <Sequence.Variables>
-                      <Variable x:TypeArguments="x:String" Name="GameDescription" />
+                      <Variable x:TypeArguments="x:String" Name="GameDescription">
+                        <Variable.Default>
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </Variable.Default>
+                      </Variable>
                       <Variable x:TypeArguments="x:String" Default="Free To Play&#xA;One Way Road: Firehunt&#xA;Adventure,&#xA;Action,&#xA;Arcade,&#xA;Shoot 'Em Up" Name="Newtext" />
                       <Variable x:TypeArguments="x:String" Name="Name">
                         <Variable.Default>
@@ -242,11 +242,7 @@
                           <Literal x:TypeArguments="x:String" Value="" />
                         </Variable.Default>
                       </Variable>
-                      <Variable x:TypeArguments="x:String" Name="Description">
-                        <Variable.Default>
-                          <Literal x:TypeArguments="x:String" xml:space="preserve"> </Literal>
-                        </Variable.Default>
-                      </Variable>
+                      <Variable x:TypeArguments="x:String" Default=" " Name="Description" />
                       <Variable x:TypeArguments="x:Boolean" Name="FreeGame" />
                       <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="Results" />
                       <Variable x:TypeArguments="x:String" Name="price">
@@ -301,7 +297,13 @@
                     </Assign>
                     <ui:Matches BuilderPattern="\d* *[a-zA-Z]+, \d{4}" DisplayName="Find Matching Patterns for Release Date" FirstMatch="[ReleaseDate]" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Matches_10" Input="[GameDescription]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\\d* *[a-zA-Z]+, \\d{4}&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\d* *[a-zA-Z]+, \d{4}" RegexOption="IgnoreCase, Compiled" />
                     <ui:Matches BuilderPattern="Developer .*Publisher.*Released" DisplayName="Find Matching Patterns For Developer And Publisher" FirstMatch="[devAndpublish]" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Matches_12" Input="[GameDescription]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;Developer .*Publisher.*Released&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="Developer.*Publisher.*Released|Developer.*Publisher.*" RegexOption="IgnoreCase, Compiled" />
-                    <If Condition="[devAndpublish IsNot Nothing]" sap:VirtualizedContainerService.HintSize="655.2,577.6" sap2010:WorkflowViewState.IdRef="If_5">
+                    <If Condition="[devAndpublish IsNot Nothing]" sap:VirtualizedContainerService.HintSize="655.2,56.8" sap2010:WorkflowViewState.IdRef="If_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
                         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,304.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
                           <sap:WorkflowViewStateService.ViewState>
@@ -338,7 +340,7 @@
                       </If.Else>
                     </If>
                     <ui:Matches BuilderPattern="Reviews:.*Release Date" DisplayName="Find Matching Patterns For Reviews" FirstMatch="[Reviews]" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Matches_11" Input="[GameDescription]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;Reviews:.*Release Date&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="Reviews:.*Release Date" RegexOption="IgnoreCase, Compiled" />
-                    <If Condition="[Reviews IsNot Nothing]" sap:VirtualizedContainerService.HintSize="655.2,1108" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If Condition="[Reviews IsNot Nothing]" sap:VirtualizedContainerService.HintSize="655.2,1131.2" sap2010:WorkflowViewState.IdRef="If_3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -346,7 +348,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="621.6,835.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="621.6,858.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -361,7 +363,7 @@
                               <InArgument x:TypeArguments="s:String[]">[Reviews.Replace("Release Date","").Replace("Reviews:","").Trim().Split("-"c)]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <Sequence DisplayName="set Color per Review" sap:VirtualizedContainerService.HintSize="559.2,635.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                          <Sequence DisplayName="set Color per Review" sap:VirtualizedContainerService.HintSize="559.2,658.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -369,29 +371,29 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <ui:Matches BuilderPattern="[a-zA-Z ]+" DisplayName="Find Matching Patterns" FirstMatch="[RevDegree]" sap:VirtualizedContainerService.HintSize="496.8,92" sap2010:WorkflowViewState.IdRef="Matches_17" Input="[ReviewsSplited(0)]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;[a-zA-Z ]+&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[a-zA-Z ]+" RegexOption="IgnoreCase, Compiled" />
-                            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[RevDegree.Trim()]" sap:VirtualizedContainerService.HintSize="496.8,431.2" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-                              <Assign x:Key="Overwhelmingly Positive" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_23">
+                            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[RevDegree.Trim()]" sap:VirtualizedContainerService.HintSize="496.79999999999995,455.2" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                              <Assign x:Key="Overwhelmingly Positive" sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_23">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">Lawn Green</InArgument>
+                                  <InArgument x:TypeArguments="x:String">#7cfc00</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <Assign x:Key="Very Positive" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_24">
+                              <Assign x:Key="Very Positive" sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_24">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">Lime Green</InArgument>
+                                  <InArgument x:TypeArguments="x:String">#32cd32</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <Assign x:Key="Mostly Positive " sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_25">
+                              <Assign x:Key="Mostly Positive " sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_25">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">Green</InArgument>
+                                  <InArgument x:TypeArguments="x:String">#008000</InArgument>
                                 </Assign.Value>
                               </Assign>
                               <Assign x:Key="Mixed" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_26">
@@ -399,7 +401,7 @@
                                   <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">Yellow</InArgument>
+                                  <InArgument x:TypeArguments="x:String">#ffff00</InArgument>
                                 </Assign.Value>
                               </Assign>
                               <Assign x:Key="Mostly Negative" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_27">
@@ -407,7 +409,7 @@
                                   <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">Red</InArgument>
+                                  <InArgument x:TypeArguments="x:String">#ff0000</InArgument>
                                 </Assign.Value>
                               </Assign>
                               <Assign x:Key="Very Negative " sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_28">
@@ -415,7 +417,7 @@
                                   <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">Fire Brick</InArgument>
+                                  <InArgument x:TypeArguments="x:String">#b22222</InArgument>
                                 </Assign.Value>
                               </Assign>
                               <Assign x:Key="Overwhelmingly Negative" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_29">
@@ -423,7 +425,29 @@
                                   <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">Dark Red</InArgument>
+                                  <InArgument x:TypeArguments="x:String">#8b0000</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign x:Key="Positive" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_31">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">#006400</InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
+                              <Assign x:Key="Negative" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_32">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[color]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">#a40000</InArgument>
                                 </Assign.Value>
                               </Assign>
                             </Switch>
@@ -447,7 +471,15 @@
                         </InArgument>
                       </ui:Replace.Replacement>
                     </ui:Replace>
-                    <ui:Matches BuilderPattern="    .*" DisplayName="Find Matching Patterns For Descreption" FirstMatch="[Description]" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Matches_14" Input="[GameDescription]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;    .*&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="    .*" RegexOption="IgnoreCase, Compiled" />
+                    <ui:Matches BuilderPattern="&quot;\d* *[a-zA-Z]+, \d{4}.*" DisplayName="Find Matching Patterns For Descreption" FirstMatch="[Description]" sap:VirtualizedContainerService.HintSize="655.2,92" sap2010:WorkflowViewState.IdRef="Matches_14" Input="[GameDescription]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\&quot;\\d* *[a-zA-Z]+, \\d{4}.*&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\d* *[a-zA-Z]+, \d{4}.*" RegexOption="IgnoreCase, Compiled" />
+                    <Assign sap:VirtualizedContainerService.HintSize="655.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_30">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[Description]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[Description.Replace(ReleaseDate,"")]</InArgument>
+                      </Assign.Value>
+                    </Assign>
                     <Assign sap:VirtualizedContainerService.HintSize="655.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_21">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[Game_Text]</OutArgument>
@@ -457,7 +489,13 @@
                       </Assign.Value>
                     </Assign>
                     <uast:SplitText DisplayName="Split Text" sap:VirtualizedContainerService.HintSize="655.2,225.6" sap2010:WorkflowViewState.IdRef="SplitText_3" Results="[Results]" Separator="NewLine" SeparatorKey="NewLine" Source="[Game_Text]" />
-                    <If Condition="[Game_Text.Contains(&quot;FREE&quot;)]" DisplayName="If the Game is FREE" sap:VirtualizedContainerService.HintSize="655.2,531.2" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If Condition="[Game_Text.Contains(&quot;Free&quot;)]" DisplayName="If the Game is FREE" sap:VirtualizedContainerService.HintSize="655.2,56.8" sap2010:WorkflowViewState.IdRef="If_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
                         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,191.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
                           <sap:WorkflowViewStateService.ViewState>
